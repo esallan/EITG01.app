@@ -12,7 +12,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={{
-        fontSize: 40,
+        fontSize: 40, //storlek
         fontWeight: 600,
       }}>
         Hej Examinator
