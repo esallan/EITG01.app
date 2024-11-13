@@ -2,13 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react'; // Importerar useState-hooken från React, används för att hantera state i funktionella komponenter.
 import { StyleSheet, Text, Image, View, Button, Alert, Platform, TouchableHighlight, SafeAreaView } from 'react-native'; // Importerar nödvändiga komponenter från React Native för att bygga appens layout och funktionalitet.
 
-
-
 export default function App() {
-
-
-
-
   return (
     <View style={styles.container}>
       <Text style={{
@@ -32,7 +26,6 @@ export default function App() {
           }} />
       </TouchableHighlight>
 
-
       <Button
         title="Press me!"
         color="blue"
@@ -44,9 +37,6 @@ export default function App() {
     </View>
   );
 }
-
-
-
 
 const styles = StyleSheet.create({
   container: {
