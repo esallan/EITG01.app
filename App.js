@@ -15,7 +15,7 @@ export default function App() {
       </Text>
 
       <Text style={styles.smallText}>
-        Detta är min lilla app
+        Detta är min lilla app som ger användaren filmtips för familjer
       </Text>
 
       <Image
@@ -54,10 +54,9 @@ export default function App() {
       </View>
 
 
-      {/* Knapp 3: En annan knapp kan vara för att göra något annat */}
       <View style={styles.filmtipsButton}>
         <Button
-          title="Filmtips"
+          title="Se dagens filmtips"
           onPress={() => Alert.alert('Dagens filmtips:', '- Inside Out \n- The Incredibles\n- Baby Boss\n')}
         />
       </View>
@@ -84,9 +83,10 @@ const styles = StyleSheet.create({
     color: 'purple'
   },
   smallText: {
-    fontSize: 15,
-    fontWeight: '400',
-    marginTop: 0,
+    fontSize: 12,
+    fontWeight: '40',
+    marginLeft: 20,
+    marginRight: 20,
   },
   image: {
     width: '100%',
