@@ -10,7 +10,11 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
 
-      <Text style={styles.headerText}>
+      <Text style={styles.header1Text}>
+        Välkommen till Filmtips!
+      </Text>
+
+      <Text style={styles.header2Text}>
         Hej Examinator
       </Text>
 
@@ -30,13 +34,13 @@ export default function App() {
 
       <View style={styles.tryckHarButton}>
         <Button
-          title="Tryck här!"
+          title="Tryck här för att ge betyg!"
 
           onPress={() => Alert.alert("Wohoo du tryckte på knappen!", "Blir jag godkänd?", [
             {
-              text: "nej!",
+              text: "Nej!",
               onPress: () => {
-                console.log("nej!");
+                console.log("Nej!");
                 setShowNewImage(true);
                 setIsSadImage(true); // Visa den sadness bilden
               },
@@ -76,11 +80,18 @@ const styles = StyleSheet.create({
     gap: '2%',
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
-  headerText: {
+  header1Text: {
     fontSize: 30,
     fontWeight: '600',
-    marginTop: 80,
+    marginTop: 0,
     color: 'purple'
+  },
+  header2Text: {
+    fontSize: 15,
+    fontWeight: '600',
+    marginTop: 60,
+    marginBottom: -10,
+    color: 'brown'
   },
   smallText: {
     fontSize: 12,
@@ -95,8 +106,8 @@ const styles = StyleSheet.create({
   },
   filmtipsButton: {
     position: 'absolute',
-    top: 60,
-    left: 10,
+    top: 140,
+
     backgroundColor: 'white',
     borderRadius: 10,
   },
