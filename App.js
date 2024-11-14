@@ -97,24 +97,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 60,
     left: 10,
-    marginRight: 40,
-    marginTop: 10,
     backgroundColor: 'white',
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: 'white'
   },
   tryckHarButton: {
-
-    top: 10,
-    left: 10,
-    marginRight: 40,
-    marginTop: 10,
     backgroundColor: 'white',
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: 'white'
-
-
   }
 });
