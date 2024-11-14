@@ -1,52 +1,57 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react'; // Importerar useState-hooken från React, används för att hantera state i funktionella komponenter.
-import { StyleSheet, Text, Image, Platform, Button, Alert, TouchableHighlight, SafeAreaView } from 'react-native'; // Importerar nödvändiga komponenter från React Native för att bygga appens layout och funktionalitet.
+import { useState } from 'react';
+import { StyleSheet, Text, Image, Platform, Button, Alert, SafeAreaView } from 'react-native';
 
 export default function App() {
-  const [isImageEnlarged, setIsImageEnlarged] = useState(false);
+  const [showNewImage, setShowNewImage] = useState(false);
+  const [isSadImage, setIsSadImage] = useState(false);
 
   return (
-    <SafeAreaView style={styles.container}> {/*kan passa in en array med, med olika styles */}
+    <SafeAreaView style={styles.container}>
 
-      <Text style={{
-        fontSize: 40,
-        fontWeight: 900,
-        gap: '2',
-      }}>
+      <Text style={styles.headerText}>
         Hej Examinator
       </Text>
 
-      <Text style={{
-        gap: '20',
-        fontSize: 20,
-      }}>Detta är min lilla app, testa tryck på bilden</Text>
+      <Text style={styles.smallText}>
+        Detta är min lilla app
+      </Text>
 
-      <TouchableHighlight
-        onPress={() => setIsImageEnlarged(!isImageEnlarged)}
-      >
-
-        <Image
-          style={{
-            borderRadius: 10,
-            width: isImageEnlarged ? 300 : 200,
-            height: isImageEnlarged ? 340 : 300,
-          }}
-          source={{
-            uri: "https://picsum.photos/seed/picsum/200/300",
-          }} />
-      </TouchableHighlight>
+      <Image
+        style={styles.image}
+        source={showNewImage
+          ? isSadImage
+            ? require('./assets/sadness1.png') // Visar bilden för "nej!"
+            : require('./assets/joy.png') // Visar bilden för "Självfallet"
+          : require('./assets/joyandsadness.png') // Standardbild
+        }
+      />
 
       <Button
-        title="Press me!"
-        color="blue"
+        title="Tryck här!"
+        color="black"
         onPress={() => Alert.alert("Wohoo du tryckte på knappen!", "Blir jag godkänd?", [
-          { text: "Ja!", onPress: () => console.log("Ja!") },
-          { text: "Självfallet", onPress: () => console.log("Självfallet") }
-        ])} />
+          {
+            text: "nej!",
+            onPress: () => {
+              console.log("nej!");
+              setShowNewImage(true);
+              setIsSadImage(true); // Visa den ledsna bilden
+            },
+          },
+          {
+            text: "Självfallet",
+            onPress: () => {
+              console.log("Självfallet");
+              setShowNewImage(true);
+              setIsSadImage(false); // Visa glada-bild
+            },
+          },
+        ])}
+      />
     </SafeAreaView>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -58,6 +63,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: '2%',
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeigt : 0,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+  },
+  headerText: {
+    fontSize: 40,
+    fontWeight: '600',
+    marginBottom: 0,
+  },
+  smallText: {
+    fontSize: 20,
+    fontWeight: '400',
+    marginTop: 0,
+  },
+  image: {
+    width: 400,  // Fixerad bredd
+    height: 400, // Fixerad höjd
+    borderRadius: 10,
   },
 });
