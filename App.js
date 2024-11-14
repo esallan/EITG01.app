@@ -61,7 +61,12 @@ export default function App() {
       <View style={styles.filmtipsButton}>
         <Button
           title="Se dagens filmtips"
-          onPress={() => Alert.alert('Dagens filmtips:', '- Inside Out \n- The Incredibles\n- Baby Boss\n')}
+          onPress={() => {
+            setShowNewImage(false);
+            setIsSadImage(false);
+            Alert.alert('Dagens filmtips:', '- Inside Out \n- The Incredibles\n- Baby Boss\n')
+          }
+          }
         />
       </View>
     </SafeAreaView>
