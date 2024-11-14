@@ -1,27 +1,37 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react'; // Importerar useState-hooken från React, används för att hantera state i funktionella komponenter.
-import { StyleSheet, Text, Image, View, Button, Alert, Platform, TouchableHighlight, SafeAreaView } from 'react-native'; // Importerar nödvändiga komponenter från React Native för att bygga appens layout och funktionalitet.
+import { StyleSheet, Text, Image, Platform, Button, Alert, TouchableHighlight, SafeAreaView } from 'react-native'; // Importerar nödvändiga komponenter från React Native för att bygga appens layout och funktionalitet.
 
 export default function App() {
+  const [isImageEnlarged, setIsImageEnlarged] = useState(false);
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}> {/*kan passa in en array med, med olika styles */}
+
       <Text style={{
-        fontSize: 40, //storlek
-        fontWeight: 600,
+        fontSize: 40,
+        fontWeight: 900,
+        gap: '2',
       }}>
         Hej Examinator
       </Text>
 
+      <Text style={{
+        gap: '20',
+        fontSize: 20,
+      }}>Detta är min lilla app, testa tryck på bilden</Text>
+
       <TouchableHighlight
-        onPress={() => console.log("Imaged tapped")}
+        onPress={() => setIsImageEnlarged(!isImageEnlarged)}
       >
+
         <Image
           style={{
-            borderRadius: 16
+            borderRadius: 10,
+            width: isImageEnlarged ? 300 : 200,
+            height: isImageEnlarged ? 340 : 300,
           }}
           source={{
-            width: 200,
-            height: 300,
             uri: "https://picsum.photos/seed/picsum/200/300",
           }} />
       </TouchableHighlight>
@@ -33,10 +43,10 @@ export default function App() {
           { text: "Ja!", onPress: () => console.log("Ja!") },
           { text: "Självfallet", onPress: () => console.log("Självfallet") }
         ])} />
-
-    </View>
+    </SafeAreaView>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -47,6 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'lightpink',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: '10%',
+    gap: '2%',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeigt : 0,
   },
 });
