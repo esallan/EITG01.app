@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, Image, Platform, Button, Alert, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, Image, View, Platform, Button, Alert, SafeAreaView } from 'react-native';
 
 export default function App() {
   const [showNewImage, setShowNewImage] = useState(false);
   const [isSadImage, setIsSadImage] = useState(false);
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -27,30 +28,39 @@ export default function App() {
         }
       />
 
-      <Button
-        title="Tryck här!"
-        color="black"
-        onPress={() => Alert.alert("Wohoo du tryckte på knappen!", "Blir jag godkänd?", [
-          {
-            text: "nej!",
-            onPress: () => {
-              console.log("nej!");
-              setShowNewImage(true);
-              setIsSadImage(true); // Visa den sadness bilden
+      <View style={styles.tryckHarButton}>
+        <Button
+          title="Tryck här!"
+
+          onPress={() => Alert.alert("Wohoo du tryckte på knappen!", "Blir jag godkänd?", [
+            {
+              text: "nej!",
+              onPress: () => {
+                console.log("nej!");
+                setShowNewImage(true);
+                setIsSadImage(true); // Visa den sadness bilden
+              },
             },
-          },
-          {
-            text: "Självfallet",
-            onPress: () => {
-              console.log("Självfallet");
-              setShowNewImage(true);
-              setIsSadImage(false); // Visa joy
+            {
+              text: "Självfallet",
+              onPress: () => {
+                console.log("Självfallet");
+                setShowNewImage(true);
+                setIsSadImage(false); // Visa joy
+              },
             },
-          },
-        ])}
-      />
+          ])}
+        />
+      </View>
 
 
+      {/* Knapp 3: En annan knapp kan vara för att göra något annat */}
+      <View style={styles.filmtipsButton}>
+        <Button
+          title="Filmtips"
+          onPress={() => Alert.alert('Dagens filmtips:', '- Inside Out \n- The Incredibles\n- Baby Boss\n')}
+        />
+      </View>
     </SafeAreaView>
   );
 }
@@ -68,12 +78,13 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   headerText: {
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: '600',
-    marginBottom: 0,
+    marginTop: 80,
+    color: 'purple'
   },
   smallText: {
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: '400',
     marginTop: 0,
   },
@@ -82,4 +93,28 @@ const styles = StyleSheet.create({
     height: '60%',
     borderRadius: 10,
   },
+  filmtipsButton: {
+    position: 'absolute',
+    top: 60,
+    left: 10,
+    marginRight: 40,
+    marginTop: 10,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'white'
+  },
+  tryckHarButton: {
+
+    top: 10,
+    left: 10,
+    marginRight: 40,
+    marginTop: 10,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'white'
+
+
+  }
 });
