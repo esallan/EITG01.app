@@ -21,9 +21,9 @@ export default function App() {
         style={styles.image}
         source={showNewImage
           ? isSadImage
-            ? require('./assets/sadness1.png') // Visar bilden för "nej!"
-            : require('./assets/joy.png') // Visar bilden för "Självfallet"
-          : require('./assets/joyandsadness.png') // Standardbild
+            ? require('./assets/sadness1.png')
+            : require('./assets/joy.png')
+          : require('./assets/joyandsadness.png')
         }
       />
 
@@ -36,7 +36,7 @@ export default function App() {
             onPress: () => {
               console.log("nej!");
               setShowNewImage(true);
-              setIsSadImage(true); // Visa den ledsna bilden
+              setIsSadImage(true); // Visa den sadness bilden
             },
           },
           {
@@ -44,7 +44,7 @@ export default function App() {
             onPress: () => {
               console.log("Självfallet");
               setShowNewImage(true);
-              setIsSadImage(false); // Visa glada-bild
+              setIsSadImage(false); // Visa joy
             },
           },
         ])}
@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
   image: {
-    width: '100%',  // Fixerad bredd
-    height: '60%', // Fixerad höjd
+    width: '100%',
+    height: '60%',
     borderRadius: 10,
   },
 });
