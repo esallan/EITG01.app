@@ -49,6 +49,8 @@ export default function App() {
           },
         ])}
       />
+
+
     </SafeAreaView>
   );
 }
@@ -76,8 +78,8 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
   image: {
-    width: 400,  // Fixerad bredd
-    height: 400, // Fixerad höjd
+    width: '100%',  // Fixerad bredd
+    height: '60%', // Fixerad höjd
     borderRadius: 10,
   },
 });
